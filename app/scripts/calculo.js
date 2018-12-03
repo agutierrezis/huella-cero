@@ -72,7 +72,7 @@ function addSource(sourceNumber) {
     // Create Source total Value
     const sourceTotalValueLabel = document.createElement('label');
     sourceTotalValueLabel.setAttribute('for', 'valorTotalFuente' + sourceNumber);
-    sourceTotalValueLabel.innerHTML = 'Valor total de la fuente:';
+    sourceTotalValueLabel.innerHTML = 'Valor Total de la Fuente:';
     newChild.appendChild(sourceTotalValueLabel);
 
     const sourceTotalValue = document.createElement('input');
@@ -83,7 +83,7 @@ function addSource(sourceNumber) {
     // Create Source uncertainty percentage
     const sourceUncertaintyLabel = document.createElement('label');
     sourceUncertaintyLabel.setAttribute('for', 'incertidumbreFuente' + sourceNumber);
-    sourceUncertaintyLabel.innerHTML = 'Porcentaje (%) de incertidumbre de los datos:';
+    sourceUncertaintyLabel.innerHTML = 'Porcentaje (%) de Incertidumbre de los Datos:';
     newChild.appendChild(sourceUncertaintyLabel);
 
     const sourceUncertainty = document.createElement('input');
@@ -95,22 +95,55 @@ function addSource(sourceNumber) {
 }
 
 function getData() {
-    let result = [];
+    const uncertaintyData = []
     const sourcesList = document.getElementsByClassName('fuente');
 
     for(var i = 0; i < sourcesList.length; i++) {
         const sourceItem = sourcesList.item(i);
         const tipoFuente = sourceItem.getElementsByClassName('tipo-fuente')[0].value;
+        const tipoFuenteIndex = sourceItem.getElementsByClassName('tipo-fuente')[0].selectedIndex;
         const valorFuente = sourceItem.getElementsByClassName('valor-fuente')[0].value;
         const incertidumbreFuente = sourceItem.getElementsByClassName('incertidumbre-fuente')[0].value;
-        result.push({
+        uncertaintyData.push({
             'fuente': tipoFuente,
+            'fuenteIndex': tipoFuenteIndex, 
             'valor': valorFuente,
-            'Incertidumbre': incertidumbreFuente
+            'incertidumbre': incertidumbreFuente
         });
     }
 
-    console.log(JSON.stringify(result));
+    // Calculo de Incertidumbre
+    for (var fuente of uncertaintyData) {
+        fuente["valorIncertidumbre"] = (parseInt(fuente.valor) * (parseInt(fuente.incertidumbre) / 100))
+    }
 
-    return result;
+    // Sumatoria
+    let summatory = 0
+    for (var fuente of uncertaintyData) {
+        summatory += fuente.valorIncertidumbre
+    }
+
+    const $resultsContainer = $('.results-container')
+    const $resultsTableBody = $('.results-table__body')
+    const $sumatoriaLabel = $('.sumatoria')
+
+    let tableBody = ""
+    for (var fuente of uncertaintyData) {
+        tableBody +=
+        '<tr>' +
+            '<th>' + SOURCE_TYPES[fuente.fuenteIndex].value + '</th>' +
+            '<th>' + fuente.valor + '</th>' +
+            '<th>' + fuente.incertidumbre + '</th>' +
+            '<th>' + fuente.valorIncertidumbre + '</th>' +
+        '</tr>'
+    }
+
+    $resultsContainer.show()
+    $resultsTableBody.empty()
+    $resultsTableBody.append(tableBody)
+    $sumatoriaLabel.empty()
+    $sumatoriaLabel.append(summatory)
+
+    console.warn('uncertaintyData:', JSON.stringify(uncertaintyData))
+    console.warn('summatory:', summatory)
 }

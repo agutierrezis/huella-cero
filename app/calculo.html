@@ -49,6 +49,22 @@
                     <button id="addSourceBtn" class="btn btn-lg btn-success">Agregar fuente</a>
                     <button id="calculateBtn" class="btn btn-lg btn-success">Calcular</a>
                 </div>
+
+                <div class="results-container" style="display: none;">
+                  <h1>Resultados</h1>
+                  <table class="results-table table table-dark">
+                    <thead class="results-table__header">
+                      <tr>
+                        <th scope="col">Tipo de Fuente</th>
+                        <th scope="col">Valor Total de la Fuente</th>
+                        <th scope="col">Porcentaje de Incertidumbre (%)</th>
+                        <th scope="col">Valor de Incertidumbre</th>
+                      </tr>
+                    </thead>
+                    <tbody class="results-table__body"></tbody>
+                  </table>
+                  <h4><span style="font-weight: bold;">Incertidumbre de los Datos de la Actividad: </span><span class="sumatoria"></span></h1>
+                </div>
           </form>
       </div>
 
