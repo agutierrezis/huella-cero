@@ -153,12 +153,13 @@
                   </div>
                   <div class="md-form">
                     <i class="fa fa-envelope prefix grey-text"></i>
-                    <input type="password" id="form2" class="form-control">
+                    <input type="password" id="password" class="form-control">
                     <label for="form2">Password</label>
                   </div>
+                  <p id="login-error" class="text-error" style="display: none; color: red;">Invalid credentials</p>
 
                   <div class="text-center">
-                    <a href="./dashboard.html" class="btn btn-indigo">Log in</a>
+                    <a href="/" id="login-btn" class="btn btn-indigo">Log in</a>
                     <hr>
                     <fieldset class="form-check">
                       <input type="checkbox" class="form-check-input" id="checkbox1">
@@ -376,6 +377,8 @@
 
   <!-- SCRIPTS -->
   <!-- JQuery -->
+  <script src="scripts/index.js"></script>
+
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <!-- Bootstrap tooltips -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
