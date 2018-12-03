@@ -41,8 +41,15 @@
         <h3 class="text-muted">Huella Cero</h3>
       </div>
       <div>
-          Cálculo aqui
-      </div>
+          <form>
+                <p class="lead">Ingrese a continuación la información de sus fuentes generadoras de GEI's.</p>
+                <div id="fuentes">
+                </div>
+                <div class="actions-container">
+                    <button id="addSourceBtn" class="btn btn-lg btn-success">Agregar fuente</a>
+                    <button id="calculateBtn" class="btn btn-lg btn-success">Calcular</a>
+                </div>
+          </form>
       </div>
 
        <div id="result" style="height: auto; margin: auto; min-width: 400px; max-width: 980px"></div>
@@ -92,6 +99,7 @@
 
     <!-- build:js scripts/main.js -->
     <script src="scripts/main.js"></script>
+    <script src="scripts/calculo.js"></script>
     <!-- endbuild -->
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
