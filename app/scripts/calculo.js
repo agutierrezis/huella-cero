@@ -46,52 +46,14 @@ const SOURCE_TYPES = [
 }());
 
 function addSource(sourceNumber) {
-    const sources = document.getElementById('fuentes');
-    const newChild = document.createElement('div');
-    newChild.setAttribute('id', 'fuente' + sourceNumber);
-    newChild.setAttribute('class', 'fuente jumbotron');
+    const table = $('#sourceTable');
+    const rows = table.children();
+    const lastRow = rows[rows.length - 2];
+    const incertidumbre = $('#incertidumbre').val() || 0;
+    const valor = $('#valor').val() || 0;
+    const sourceOption = $($('#sourceOption :selected')[0]).text();
+    $('<tr><th>' + sourceOption + '</th><td>' + incertidumbre + '</td><td>' + valor + '</td></tr>').insertBefore(lastRow);
 
-    // Create Source Type dropdown
-    const sourceTypeLabel = document.createElement('label');
-    sourceTypeLabel.setAttribute('for', 'tipoFuente' + sourceNumber);
-    sourceTypeLabel.innerHTML = 'Tipo de Fuente:';
-    newChild.appendChild(sourceTypeLabel);
-
-    const sourceTypeSelect = document.createElement('select');
-    sourceTypeSelect.setAttribute('id', 'tipoFuente' + sourceNumber);
-    sourceTypeSelect.setAttribute('class', 'form-control tipo-fuente');
-    newChild.appendChild(sourceTypeSelect);
-
-    for (var i = 0; i < SOURCE_TYPES.length; i++) {
-        let option = document.createElement('option');
-        option.setAttribute('value', SOURCE_TYPES[i].key);
-        option.text = SOURCE_TYPES[i].value;
-        sourceTypeSelect.appendChild(option);
-    }
-
-    // Create Source total Value
-    const sourceTotalValueLabel = document.createElement('label');
-    sourceTotalValueLabel.setAttribute('for', 'valorTotalFuente' + sourceNumber);
-    sourceTotalValueLabel.innerHTML = 'Valor Total de la Fuente:';
-    newChild.appendChild(sourceTotalValueLabel);
-
-    const sourceTotalValue = document.createElement('input');
-    sourceTotalValue.setAttribute('id', 'valorTotalFuente' + sourceNumber);
-    sourceTotalValue.setAttribute('class', 'form-control valor-fuente');
-    newChild.appendChild(sourceTotalValue);
-
-    // Create Source uncertainty percentage
-    const sourceUncertaintyLabel = document.createElement('label');
-    sourceUncertaintyLabel.setAttribute('for', 'incertidumbreFuente' + sourceNumber);
-    sourceUncertaintyLabel.innerHTML = 'Porcentaje (%) de Incertidumbre de los Datos:';
-    newChild.appendChild(sourceUncertaintyLabel);
-
-    const sourceUncertainty = document.createElement('input');
-    sourceUncertainty.setAttribute('id', 'incertidumbreFuente' + sourceNumber);
-    sourceUncertainty.setAttribute('class', 'form-control incertidumbre-fuente');
-    newChild.appendChild(sourceUncertainty);
-
-    sources.appendChild(newChild);
 }
 
 function getData() {
