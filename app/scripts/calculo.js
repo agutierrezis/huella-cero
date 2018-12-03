@@ -1,34 +1,65 @@
 "use strict";
 //import { SOURCE_TYPES } from './source-types';
 
+const GEI_SOURCES = [
+    {
+        "key": "CO2",
+        "value": "Dióxido de Carbono"
+    },
+    {
+        "key": "O2",
+        "value": "Vapor de agua"
+    },
+    {
+        "key": "CH4",
+        "value": "Metano"
+    },
+    {
+        "key": "NO",
+        "value": "Óxido de Nitrógeno"
+    },
+    {
+        "key": "03",
+        "value": "Ozono"
+    }
+]
+
+
 const SOURCE_TYPES = [
     {
         "key": "gas",
-        "value": "Gasolina"
+        "value": "Gasolina",
+        "category": "CO2"
     },
     {
         "key": "die",
-        "value": "Diésel"
+        "value": "Diésel",
+        "category": "CO2"
     },
     {
         "key": "ref",
-        "value": "Refrigerantes"
+        "value": "Refrigerantes",
+        "category": "CH4"
     },
     {
         "key": "ext",
-        "value": "Extintores"
+        "value": "Extintores",
+        "category": "NO"
     },
     {
-        "key": "gas",
-        "value": "Gas LP"
+        "key": "gasLP",
+        "value": "Gas LP",
+        "category": "CO2"
     },
     {
         "key": "tse",
-        "value": "Tanque séptico"
+        "value": "Tanque séptico",
+        "category": "CH4"
     },
     {
         "key": "ele",
-        "value": "Electricidad"
+        "value": "Electricidad",
+        "category": "CO2"
     }
 ];
 
@@ -146,4 +177,6 @@ function getData() {
 
     console.warn('uncertaintyData:', JSON.stringify(uncertaintyData))
     console.warn('summatory:', summatory)
+
+    showChart(uncertaintyData)
 }
