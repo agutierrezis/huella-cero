@@ -40,8 +40,24 @@
         <h3 class="text-muted">Huella Cero</h3>
       </div>
       <div>
-          Cálculo aqui
-      </div>
+          <form>
+              <div id="fuentes">
+                  <div id="fuente1">
+                        <div class="dropdown">
+                            <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Seleccione fuente
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dLabel">
+                                <li>1</li>
+                                <li>2</li>
+                            </ul>
+                        </div>
+                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                  </div>
+              </div>
+              <p><button id="addSourceBtn" class="btn btn-lg btn-success">Agregar fuente</a></p>
+          </form>
       </div>
 
       <div class="footer">
@@ -88,6 +104,7 @@
 
     <!-- build:js scripts/main.js -->
     <script src="scripts/main.js"></script>
+    <script src="scripts/calculo.js"></script>
     <!-- endbuild -->
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
