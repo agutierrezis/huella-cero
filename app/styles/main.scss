@@ -9,6 +9,9 @@
  //bower:scss
  @import "bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
  //endbower
+//bower:scss
+@import "./calculo.scss";
+//endbower
 
 /* ==========================================================================
    Base styles: opinionated defaults
@@ -160,6 +163,22 @@ body {
 .jumbotron {
     text-align: center;
     border-bottom: 1px solid #e5e5e5;
+    
+    &.fuente {
+        text-align: left;
+        padding-bottom: 15px;
+        padding-top: 15px;
+
+        .form-control {
+            margin-bottom: 15px;
+        }
+    }
+}
+
+.actions-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
 }
 
 .jumbotron .btn {
